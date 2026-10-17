@@ -1,0 +1,24 @@
+{%- comment -%}
+  Usage:
+    {% include media.html file="photo.jpg" caption="What we found" %}
+  Options: file (required), caption, alt, size ("wide" | "small").
+  Images, videos (mp4/webm/mov), audio (mp3/m4a/wav/ogg) and PDFs are all handled.
+{%- endcomment -%}
+{%- capture _url -%}{% include media-url.html ref=include.file %}{%- endcapture -%}
+{%- assign _ext = include.file | split: '.' | last | downcase | strip -%}
+{%- assign _alt = include.alt | default: include.caption | default: 'Expedition photo' | strip_html | escape -%}
+<figure class="media{% if include['size'] %} media--{{ include['size'] }}{% endif %}">
+  {%- case _ext -%}
+  {%- when 'mp4', 'webm', 'mov', 'm4v' -%}
+  <video src="{{ _url }}" controls preload="metadata" playsinline></video>
+  {%- when 'mp3', 'm4a', 'wav', 'ogg' -%}
+  <audio src="{{ _url }}" controls preload="metadata"></audio>
+  {%- when 'pdf' -%}
+  <a class="media-file" href="{{ _url }}">📜 {{ include.caption | default: include.file }}</a>
+  {%- else -%}
+  <img src="{{ _url }}" alt="{{ _alt }}" loading="lazy">
+  {%- endcase -%}
+  {%- if include.caption and _ext != 'pdf' -%}
+  <figcaption>{{ include.caption | markdownify | remove: '<p>' | remove: '</p>' | strip }}</figcaption>
+  {%- endif -%}
+</figure>

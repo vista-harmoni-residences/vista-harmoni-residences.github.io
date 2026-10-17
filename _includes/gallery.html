@@ -1,0 +1,23 @@
+{%- comment -%}
+  Two ways to use it:
+    1) Quick list, separated by "|":
+       {% include gallery.html files="a.jpg | b.jpg | c.mp4" %}
+    2) From the entry's front matter (lets you add captions):
+       gallery:
+         - file: a.jpg
+           caption: The rusty key
+       ...then {% include gallery.html %} in the body.
+{%- endcomment -%}
+<div class="gallery">
+{%- if include.files -%}
+  {%- assign _files = include.files | split: '|' -%}
+  {%- for f in _files -%}
+    {%- assign _f = f | strip -%}
+    {%- if _f != '' -%}{% include media.html file=_f %}{%- endif -%}
+  {%- endfor -%}
+{%- else -%}
+  {%- for item in page.gallery -%}
+    {% include media.html file=item.file caption=item.caption alt=item.alt %}
+  {%- endfor -%}
+{%- endif -%}
+</div>

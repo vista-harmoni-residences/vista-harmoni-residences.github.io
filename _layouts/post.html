@@ -1,0 +1,37 @@
+---
+layout: default
+---
+{%- assign _number = 0 -%}
+{%- for p in site.posts reversed -%}{%- if p.url == page.url -%}{%- assign _number = forloop.index -%}{%- endif -%}{%- endfor -%}
+{%- assign _cover = page.cover | default: page.gallery.first.file -%}
+<article class="scroll log">
+  <header class="log-header">
+    <p class="log-number">Expedition Log No. {{ _number | prepend: '00' | slice: -3, 3 }}</p>
+    <h1 class="page-title">{{ page.title }}</h1>
+    <p class="log-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%-d %B %Y' }}</time>
+      {%- if page.location %} <span class="sep">✦</span> <span class="location">📍 {{ page.location }}</span>{% endif %}
+      {%- if page.hunters %} <span class="sep">✦</span> <span>🧭 {{ page.hunters | join: ', ' }}</span>{% endif %}
+    </p>
+    {%- if page.tags.size > 0 %}
+    <ul class="tags">{% for t in page.tags %}<li><a href="{{ '/map/' | relative_url }}#tag-{{ t | slugify }}">{{ t }}</a></li>{% endfor %}</ul>
+    {%- endif %}
+  </header>
+
+  {%- if _cover and page.show_cover != false %}
+  <div class="log-cover">{% include media.html file=_cover alt=page.title %}</div>
+  {%- endif %}
+
+  <div class="prose">
+    {{ content }}
+  </div>
+</article>
+
+<nav class="log-nav" aria-label="More expeditions">
+  {%- if page.previous %}
+  <a class="log-nav-prev" href="{{ page.previous.url | relative_url }}"><span>← Previous expedition</span>{{ page.previous.title }}</a>
+  {%- else %}<span></span>{% endif %}
+  {%- if page.next %}
+  <a class="log-nav-next" href="{{ page.next.url | relative_url }}"><span>Next expedition →</span>{{ page.next.title }}</a>
+  {%- endif %}
+</nav>

@@ -1,0 +1,38 @@
+# ─────────────────────────────────────────────────────────────
+#  Site settings. After editing this file, push to main and the
+#  site rebuilds (local preview needs a restart to pick it up).
+# ─────────────────────────────────────────────────────────────
+title: "Vista Harmoni Residences"
+subtitle: "Treasure Hunting Adventures"
+description: "Field logs, maps and finds from the treasure hunters of Vista Harmoni Residences."
+url: "https://vista-harmoni-residences.github.io"
+baseurl: ""
+
+# Shown on the home page above the expedition trail.
+tagline: "X marks the spot. Every corner of the estate hides something; these are the logs of what we found."
+
+# Where entry photos/videos live (used by the media & gallery helpers).
+media_path: /media/
+
+markdown: kramdown
+permalink: /logs/:year/:month/:day/:title/
+# Publish entries dated today even when GitHub's build server (UTC)
+# hasn't reached that date yet.
+future: true
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "" }
+    values: { layout: page }
+
+exclude:
+  - README.md
+  - new-entry.sh
+  - Gemfile
+  - Gemfile.lock
+  - vendor

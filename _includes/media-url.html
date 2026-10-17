@@ -1,0 +1,13 @@
+{%- comment -%}
+  Turns a media reference into a URL.
+  - Plain file name ("photo.jpg")        -> /media/photo.jpg
+  - Sub-folder ("trip-2/photo.jpg")      -> /media/trip-2/photo.jpg
+  - Full URL or path starting with "/"   -> used as-is
+  Spaces and other special characters are escaped automatically.
+{%- endcomment -%}
+{%- assign _ref = include.ref | strip -%}
+{%- assign _first = _ref | slice: 0 -%}
+{%- if _ref contains '://' -%}{{ _ref }}
+{%- elsif _first == '/' -%}{{ _ref | uri_escape | relative_url }}
+{%- else -%}{{ site.media_path | append: _ref | uri_escape | relative_url }}
+{%- endif -%}

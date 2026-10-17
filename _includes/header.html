@@ -1,0 +1,14 @@
+<header class="site-header">
+  <a class="brand" href="{{ '/' | relative_url }}">
+    {% include compass.html %}
+    <span class="brand-text">
+      <span class="brand-kicker">{{ site.title }}</span>
+      <span class="brand-title">{{ site.subtitle }}</span>
+    </span>
+  </a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Expeditions</a>
+    <a href="{{ '/map/' | relative_url }}"{% if page.url == '/map/' %} aria-current="page"{% endif %}>Treasure Map</a>
+    <a href="{{ '/crew/' | relative_url }}"{% if page.url == '/crew/' %} aria-current="page"{% endif %}>The Crew</a>
+  </nav>
+</header>

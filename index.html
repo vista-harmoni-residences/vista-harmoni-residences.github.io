@@ -1,0 +1,37 @@
+---
+layout: default
+title: Expeditions
+---
+<section class="intro scroll">
+  <h1 class="intro-title">{{ site.subtitle }}</h1>
+  <p class="intro-tagline">{{ site.tagline }}</p>
+</section>
+
+{%- if site.posts.size == 0 %}
+<p class="empty">No expeditions logged yet. The map is blank, for now.</p>
+{%- else %}
+<ol class="trail">
+  {%- for post in site.posts %}
+  {%- assign _number = site.posts.size | minus: forloop.index0 -%}
+  {%- assign _cover = post.cover | default: post.gallery.first.file -%}
+  <li class="trail-stop">
+    <span class="trail-marker" aria-hidden="true">✕</span>
+    <a class="log-card" href="{{ post.url | relative_url }}">
+      {%- if _cover %}
+      <span class="log-card-photo"><img src="{% include media-url.html ref=_cover %}" alt="" loading="lazy"></span>
+      {%- endif %}
+      <span class="log-card-body">
+        <span class="log-number">Log No. {{ _number | prepend: '00' | slice: -3, 3 }}</span>
+        <span class="log-card-title">{{ post.title }}</span>
+        <span class="log-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%-d %b %Y' }}</time>
+          {%- if post.location %} <span class="sep">✦</span> 📍 {{ post.location }}{% endif %}
+        </span>
+        <span class="log-card-excerpt">{{ post.description | default: post.excerpt | strip_html | truncatewords: 40 }}</span>
+        <span class="log-card-more">Read the log →</span>
+      </span>
+    </a>
+  </li>
+  {%- endfor %}
+</ol>
+{%- endif %}
