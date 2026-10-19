@@ -40,7 +40,7 @@ Monday, Wednesday and Friday from 12:00pm - 3:00pm).
 Me and my wife and kids went for a swim, and to our surprise, the management left
 some treasure for us to find! How fun! I imagine they must have left them there on purpose,
 seeing as how we went on the Saturday just one day after maintenance. Wow! It's quite
-amazing that they would give us this extra activity and making swimming in the pool
+amazing that they would give us this extra activity and make swimming in the pool
 that much more fun!
 
 Well, every great adventure starts somewhere, and ours started right here. I didn't wear
