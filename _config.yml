@@ -31,6 +31,10 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+# Google Analytics Measurement ID (see "Visitor statistics" in README.md).
+# Leave blank to switch analytics off.
+google_analytics: "G-7RW31SMP5J"
+
 # Proves to Google Search Console that you own the site (see "Search
 # engines" in README.md). Paste only the code from the content="..." part.
 # webmaster_verifications:

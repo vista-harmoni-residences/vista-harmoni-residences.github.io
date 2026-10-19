@@ -283,6 +283,19 @@ preview when a link is shared on WhatsApp or Facebook. To get found:
 New sites usually take a few days to a few weeks to show up. Check progress
 in Search Console under **Pages** and **Performance**.
 
+### Visitor statistics
+
+Visits are counted with [Google Analytics](https://analytics.google.com)
+(free). The Measurement ID is set in `_config.yml`:
+
+```yaml
+google_analytics: "G-7RW31SMP5J"
+```
+
+Set it to `""` to switch analytics off. Local previews are never counted,
+only the live site. To see which Google searches bring people in, link
+Analytics to Search Console under **Admin → Product links → Search Console links**.
+
 ---
 
 ## Drafts and hiding entries

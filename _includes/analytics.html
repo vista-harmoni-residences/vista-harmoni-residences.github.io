@@ -1,0 +1,14 @@
+{%- comment -%}
+  Google Analytics. Set google_analytics in _config.yml to turn it on.
+  Only loads on the live site, so local previews don't count as visits.
+{%- endcomment -%}
+{%- assign _ga = site.google_analytics | default: "" -%}
+{%- if _ga != "" and jekyll.environment == "production" %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ _ga }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ _ga }}');
+</script>
+{%- endif %}
