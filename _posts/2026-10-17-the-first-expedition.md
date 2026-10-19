@@ -2,7 +2,7 @@
 title: "The First Expedition"
 date: 2026-10-17
 location: "Vista Harmoni Residences - Swimming Pool"
-description: "Our very dive hunt in the Vista Harmoni Residences swimming pool, and everything we brought back."
+description: "Our very first dive hunt in the Vista Harmoni Residences swimming pool, and everything we brought back."
 tags: [first-hunt]
 cover: "WhatsApp Image 2026-10-17 at 18.09.24.jpeg"
 gallery:
