@@ -6,6 +6,7 @@
 {%- endcomment -%}
 {%- capture _url -%}{% include media-url.html ref=include.file %}{%- endcapture -%}
 {%- assign _ext = include.file | split: '.' | last | downcase | strip -%}
+{%- assign _caption = include.caption | strip -%}
 {%- assign _alt = include.alt | default: include.caption | default: 'Expedition photo' | strip_html | escape -%}
 <figure class="media{% if include['size'] %} media--{{ include['size'] }}{% endif %}">
   {%- case _ext -%}
@@ -18,7 +19,7 @@
   {%- else -%}
   <img src="{{ _url }}" alt="{{ _alt }}" loading="lazy">
   {%- endcase -%}
-  {%- if include.caption and _ext != 'pdf' -%}
+  {%- if _caption != '' and _ext != 'pdf' -%}
   <figcaption>{{ include.caption | markdownify | remove: '<p>' | remove: '</p>' | strip }}</figcaption>
   {%- endif -%}
 </figure>
