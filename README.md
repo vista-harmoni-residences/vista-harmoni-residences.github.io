@@ -305,7 +305,7 @@ _posts/              ← your entries go here
 media/               ← your photos & videos go here
 _layouts/            page templates (default, page, post)
 _includes/           header, footer, media.html, gallery.html, comments.html, compass
-assets/css/style.css all the styling (colours are at the top)
+assets/css/site.css  all the styling (colours are at the top)
 assets/js/lightbox.js click-to-enlarge photos
 assets/js/comments.js comments under each entry
 supabase/schema.sql  database setup for comments (run once in Supabase)
@@ -315,4 +315,4 @@ new-entry.sh         helper to start a new entry
 
 The look adapts automatically: parchment in light mode and a lantern-lit
 night map in dark mode. Colours are defined as variables at the top of
-`assets/css/style.css`.
+`assets/css/site.css`.
