@@ -72,6 +72,7 @@ More story here.
 | `show_cover`  | no       | Set to `false` to keep the cover on the home page but hide it at the top of the entry. |
 | `hunters`     | no       | Who went, e.g. `[Aisha, Ben]`. Shown with a 🧭 next to the date. |
 | `gallery`     | no       | A list of photos with captions (see [Galleries](#galleries)). |
+| `comments`    | no       | Set to `false` to hide comments on this entry. |
 
 Entries are numbered automatically ("Expedition Log No. 001", "002", …) in
 date order.
@@ -188,6 +189,68 @@ Edit `_config.yml`:
 
 ---
 
+## Comments
+
+Readers can leave notes under each entry. Anyone can read them, but to post,
+a reader signs in with their email: they get a link, click it, and choose the
+name to show. There are no passwords and no anonymous comments. Comments are
+stored in a free [Supabase](https://supabase.com) project, since GitHub Pages
+can't store anything itself.
+
+Until the two values under `comments:` in `_config.yml` are filled in, the
+comments section doesn't appear.
+
+### One-time setup
+
+1. **Create a project** at [supabase.com](https://supabase.com) (the free plan is plenty).
+2. **Create the tables:** open **SQL Editor**, paste in all of
+   `supabase/schema.sql`, and click **Run**.
+3. **Allow the sign-in links to come back to the site:** under
+   **Authentication → URL Configuration**, set **Site URL** to
+   `https://vista-harmoni-residences.github.io` and add these **Redirect URLs**:
+   - `https://vista-harmoni-residences.github.io/**`
+   - `http://localhost:4000/**` (for local previews)
+4. **Check the sign-in settings:** under **Authentication → Sign In / Providers**,
+   **Email** should be enabled and **Allow new users to sign up** on.
+   Leave **anonymous sign-ins** off.
+5. **Set up email sending.** Supabase's built-in email only sends a few
+   messages an hour and is meant for testing. For real use, connect an email
+   provider under **Authentication → Emails → SMTP Settings**. Free tiers from
+   providers like [Resend](https://resend.com) or [Brevo](https://www.brevo.com)
+   are plenty. While you're there, you can reword the **Magic Link** email template.
+6. **Connect the site:** under **Project Settings → API**, copy the
+   **Project URL** and the **anon public** key into `_config.yml`:
+
+   ```yaml
+   comments:
+     supabase_url: "https://abcdefgh.supabase.co"
+     supabase_key: "eyJhbGciOi..."
+   ```
+
+   The anon key is meant to be public. The rules in `schema.sql` control
+   what it can do. **Never** put the `service_role` key here.
+
+### Moderating
+
+- **Delete a comment:** in Supabase, open **Table Editor → comments** and delete
+  the row. Readers can also delete their own comments.
+- **Block someone:** under **Authentication → Users**, find their email and
+  delete or ban them.
+- **Hide comments on one entry:** add `comments: false` to its front matter.
+
+Comments belong to the entry's address, not its file, so you can freely edit
+an entry's text, photos, title, tags and other details. Its comments stop
+showing only if its address changes, which happens when you:
+
+- rename the entry's file,
+- change its `date` (in the file name or the front matter), or
+- add a `permalink:` or `slug:` line to its front matter.
+
+The comments aren't deleted. To move them to the new address, run this in the SQL Editor:
+`update comments set post = '/logs/new/address/' where post = '/logs/old/address/';`
+
+---
+
 ## Drafts and hiding entries
 
 - **Drafts:** put unfinished entries in a `_drafts/` folder (no date in the
@@ -241,9 +304,11 @@ _config.yml          site settings
 _posts/              ← your entries go here
 media/               ← your photos & videos go here
 _layouts/            page templates (default, page, post)
-_includes/           header, footer, media.html, gallery.html, compass
+_includes/           header, footer, media.html, gallery.html, comments.html, compass
 assets/css/style.css all the styling (colours are at the top)
 assets/js/lightbox.js click-to-enlarge photos
+assets/js/comments.js comments under each entry
+supabase/schema.sql  database setup for comments (run once in Supabase)
 index.html, map.html, crew.md, 404.html
 new-entry.sh         helper to start a new entry
 ```

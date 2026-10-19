@@ -1,0 +1,51 @@
+{%- comment -%}
+  Comments under an entry. Only shown once supabase_url and supabase_key
+  are filled in under `comments:` in _config.yml (see README).
+{%- endcomment -%}
+{%- assign _url = site.comments.supabase_url | default: "" -%}
+{%- assign _key = site.comments.supabase_key | default: "" -%}
+{%- if _url != "" and _key != "" and page.comments != false %}
+<section class="scroll comments" id="comments"
+  data-post="{{ page.url }}"
+  data-supabase-url="{{ _url }}"
+  data-supabase-key="{{ _key }}">
+  <h2 class="comments-title">Notes from fellow hunters</h2>
+
+  <ol class="comment-list" aria-live="polite"></ol>
+  <p class="comments-empty" hidden>No notes yet. Be the first to leave one!</p>
+
+  <div class="comment-panel">
+    <p class="comments-status">Loading notes…</p>
+
+    <form class="comment-signin" hidden>
+      <p>To leave a note, sign in with your email. We'll send you a link, no password needed.</p>
+      <label for="comment-email">Email</label>
+      <div class="comment-row">
+        <input id="comment-email" type="email" name="email" autocomplete="email" required>
+        <button type="submit">Send me a link</button>
+      </div>
+    </form>
+
+    <form class="comment-name" hidden>
+      <p>Welcome aboard! What name should we show next to your notes?</p>
+      <label for="comment-display-name">Your name</label>
+      <div class="comment-row">
+        <input id="comment-display-name" name="display_name" maxlength="40" autocomplete="nickname" required>
+        <button type="submit">Save</button>
+      </div>
+    </form>
+
+    <form class="comment-form" hidden>
+      <label for="comment-body">Leave a note</label>
+      <textarea id="comment-body" name="body" rows="4" maxlength="2000" required></textarea>
+      <div class="comment-row comment-row--end">
+        <span class="comment-who"></span>
+        <button type="button" class="comment-signout link-button">Sign out</button>
+        <button type="submit">Post note</button>
+      </div>
+    </form>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" defer></script>
+<script src="{{ '/assets/js/comments.js' | relative_url }}" defer></script>
+{%- endif %}

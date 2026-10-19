@@ -14,6 +14,12 @@ tagline: "X marks the spot. Every corner of the estate hides something; these ar
 # Where entry photos/videos live (used by the media & gallery helpers).
 media_path: /media/
 
+# Comments under each entry (see "Comments" in README.md).
+# Leave these blank to switch comments off. The key is the public
+# "anon" key, which is safe to publish.
+comments:
+  supabase_url: "https://jzpwytssztxanxdwmryw.supabase.co"
+  supabase_key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp6cHd5dHNzenR4YW54ZHdtcnl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIzOTAyNjAsImV4cCI6MjEwNzk2NjI2MH0.tHlV4Y6yIGbh2H-MHhlB3bXTKA1o3idmUWs_Laa8osI"
 markdown: kramdown
 permalink: /logs/:year/:month/:day/:title/
 # Publish entries dated today even when GitHub's build server (UTC)
@@ -33,6 +39,7 @@ defaults:
 exclude:
   - README.md
   - new-entry.sh
+  - supabase
   - Gemfile
   - Gemfile.lock
   - vendor

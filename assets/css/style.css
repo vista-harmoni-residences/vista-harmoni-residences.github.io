@@ -335,6 +335,72 @@ img, video { max-width: 100%; height: auto; display: block; }
 .log-nav a:hover { border-color: var(--accent); color: var(--accent); }
 .log-nav-next { text-align: right; grid-column: 2; }
 
+/* ── Comments ──────────────────────────────────────────── */
+
+.comments { margin-top: 2rem; }
+.comments-title {
+  font-family: var(--font-head);
+  font-weight: normal;
+  font-size: 1.7rem;
+  margin: 0 0 1rem;
+}
+.comments-title::before { content: "✦ "; color: var(--gold); }
+.comment-list { list-style: none; padding: 0; margin: 0; }
+.comment { padding: 0.8rem 0; border-bottom: 1px dashed var(--line); }
+.comment-meta { margin: 0; font-size: 1rem; color: var(--ink-soft); }
+.comment-meta strong { font-family: var(--font-head); font-weight: normal; font-size: 1.1rem; color: var(--ink); }
+.comment-body { margin: 0.2rem 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.comments-empty { font-style: italic; color: var(--ink-soft); }
+
+.comment-panel { margin-top: 1.5rem; }
+.comment-panel p { margin: 0 0 0.6rem; }
+.comments-status { font-style: italic; color: var(--ink-soft); }
+.comments-status.is-error { color: var(--accent); font-style: normal; }
+.comment-panel label { display: block; font-family: var(--font-head); margin-bottom: 0.3rem; }
+.comment-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+.comment-row--end { justify-content: flex-end; margin-top: 0.6rem; }
+.comment-who { margin-right: auto; font-size: 1rem; color: var(--ink-soft); }
+.comment-panel input,
+.comment-panel textarea {
+  flex: 1 1 14rem;
+  min-width: 0;
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.45rem 0.6rem;
+}
+.comment-row input { width: auto; }
+.comment-panel textarea { resize: vertical; display: block; }
+.comment-panel input:focus,
+.comment-panel textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.comment-panel button[type="submit"] {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  color: var(--paper);
+  background: var(--accent);
+  border: 0;
+  border-radius: 4px;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+}
+.comment-panel button[type="submit"]:hover { background: var(--gold); }
+.comment-panel button:disabled { opacity: 0.6; cursor: wait; }
+.link-button {
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.link-button:hover { color: var(--gold); }
+
 /* ── Media: photos pinned to the page ──────────────────── */
 
 .media {
