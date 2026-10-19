@@ -251,6 +251,40 @@ The comments aren't deleted. To move them to the new address, run this in the SQ
 
 ---
 
+## Search engines
+
+The site already gives search engines what they need: page titles and
+descriptions, a sitemap at `/sitemap.xml`, a `robots.txt`, and a cover-photo
+preview when a link is shared on WhatsApp or Facebook. To get found:
+
+1. **Tell Google the site exists.** Go to
+   [Google Search Console](https://search.google.com/search-console), add a
+   **URL prefix** property for `https://vista-harmoni-residences.github.io/`,
+   and choose the **HTML tag** verification method. Copy just the code from
+   `content="..."` into `_config.yml`:
+
+   ```yaml
+   webmaster_verifications:
+     google: "abc123..."
+   ```
+
+   Push, wait for the site to rebuild, then click **Verify**. Then go to
+   **Sitemaps**, enter `sitemap.xml`, and submit. (Optional: do the same at
+   [Bing Webmaster Tools](https://www.bing.com/webmasters), which can import
+   straight from Search Console.)
+2. **Write a good `description` for every entry** and mention *Vista Harmoni
+   Residences* naturally in the text. The description is what shows under
+   the link in search results.
+3. **Get linked.** Links from other sites are the biggest factor. Share
+   entries in the residents' WhatsApp and Facebook groups, and ask anyone with
+   a website or community page to link to the blog.
+4. **Keep posting.** Sites that are updated regularly get checked more often.
+
+New sites usually take a few days to a few weeks to show up. Check progress
+in Search Console under **Pages** and **Performance**.
+
+---
+
 ## Drafts and hiding entries
 
 - **Drafts:** put unfinished entries in a `_drafts/` folder (no date in the

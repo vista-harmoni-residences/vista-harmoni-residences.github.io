@@ -29,6 +29,12 @@ future: true
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Proves to Google Search Console that you own the site (see "Search
+# engines" in README.md). Paste only the code from the content="..." part.
+# webmaster_verifications:
+#   google: "paste-your-code-here"
 
 defaults:
   - scope: { path: "", type: posts }

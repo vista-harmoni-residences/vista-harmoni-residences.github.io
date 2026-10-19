@@ -1,6 +1,7 @@
 ---
 title: The Crew
 permalink: /crew/
+description: "Meet the treasure hunters of Vista Harmoni Residences, the families exploring every corner of the estate."
 ---
 
 Ahoy! We're the treasure hunters of **Vista Harmoni Residences**. Armed with

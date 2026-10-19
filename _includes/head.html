@@ -6,4 +6,12 @@
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
 {% seo %}
+{%- comment -%} Link previews (WhatsApp, Facebook…) show the entry's cover photo. {%- endcomment -%}
+{%- assign _share_image = page.cover | default: page.gallery.first.file -%}
+{%- if _share_image and page.image == nil %}
+{%- capture _share_url -%}{% include media-url.html ref=_share_image %}{%- endcapture -%}
+{%- unless _share_url contains '://' -%}{%- assign _share_url = site.url | append: _share_url -%}{%- endunless %}
+<meta property="og:image" content="{{ _share_url }}">
+<meta name="twitter:image" content="{{ _share_url }}">
+{%- endif %}
 {% feed_meta %}

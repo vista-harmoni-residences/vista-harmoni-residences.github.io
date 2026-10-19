@@ -188,6 +188,14 @@ img, video { max-width: 100%; height: auto; display: block; }
 /* ── Home: intro + trail of expeditions ────────────────── */
 
 .intro { text-align: center; margin-bottom: 3rem; }
+.intro-kicker {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin: 0 0 0.3rem;
+}
 .intro-title {
   font-family: var(--font-brand);
   font-weight: normal;
